@@ -19,35 +19,85 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
+		 
+    <dependency> 
+      <groupId>org.springframework.boot</groupId>  
+      <artifactId>spring-boot-starter-thymeleaf</artifactId> 
+    </dependency>  
+    <dependency> 
+      <groupId>org.springframework.boot</groupId>  
+      <artifactId>spring-boot-devtools</artifactId>  
+      <scope>runtime</scope> 
+    </dependency>  
+    <dependency> 
+      <groupId>org.springframework.boot</groupId>  
+      <artifactId>spring-boot-starter-web</artifactId> 
+    </dependency>  
+    <dependency> 
+      <groupId>org.springframework.boot</groupId>  
+      <artifactId>spring-boot-starter-test</artifactId>  
+      <scope>test</scope>  
+      <exclusions> 
+        <exclusion> 
+          <groupId>org.junit.vintage</groupId>  
+          <artifactId>junit-vintage-engine</artifactId> 
+        </exclusion> 
+      </exclusions> 
+    </dependency>
+ <dependency>
+	<groupId>org.webjars</groupId>
+	<artifactId>jquery</artifactId>
+	<version>2.1.1</version>
+</dependency>
+<dependency>
+	<groupId>org.webjars</groupId>
+	<artifactId>bootstrap</artifactId>
+	<version>3.2.0</version>
+</dependency>
+<dependency>
+	<groupId>org.webjars</groupId>
+	<artifactId>webjars-locator-core</artifactId>
+</dependency>
+  </dependencies>  
+  <build> 
+    <plugins> 
+      <plugin> 
+        <groupId>org.springframework.boot</groupId>  
+        <artifactId>spring-boot-maven-plugin</artifactId> 
+      </plugin>  
+      <plugin> 
+        <groupId>com.microsoft.azure</groupId>  
+        <artifactId>azure-webapp-maven-plugin</artifactId>  
+        <version>1.8.0</version>  
+        <configuration> 
+          <schemaVersion>V2</schemaVersion>  
+          <resourceGroup>RG-Software</resourceGroup>  
+          <appName>CBISMARTINTRANET</appName>  
+          <pricingTier>B1</pricingTier>  
+          <region>westeurope</region>  
+          <runtime> 
+            <os>linux</os>  
+            <javaVersion>jre8</javaVersion>  
+            <webContainer>jre8</webContainer> 
+          </runtime>  
+          <appSettings> 
+            <property> 
+              <name>JAVA_OPTS</name>  
+              <value>-Dserver.port=80</value> 
+            </property> 
+          </appSettings>  
+          <deployment> 
+            <resources> 
+              <resource> 
+                <directory>${project.basedir}/target</directory>  
+                <includes> 
+                  <include>*.jar</include> 
+                </includes> 
+              </resource> 
+            </resources> 
+          </deployment> 
+        </configuration> 
+      </plugin> 
+    </plugins> 
+  </build> 
 </project>
