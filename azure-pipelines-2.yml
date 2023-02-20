@@ -40,7 +40,8 @@ stages:
       inputs:
         SourceFolder: '$(System.DefaultWorkingDirectory)'
         Contents: '**/target/*.?(war|jar)'
-        TargetFolder: $(Build.ArtifactStagingDirectory)
+        #TargetFolder: $(Build.ArtifactStagingDirectory)
+        TargetFolder: '*'
 
     - upload: $(Build.ArtifactStagingDirectory)
       artifact: drop
